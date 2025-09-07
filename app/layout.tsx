@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 
 
 export const metadata: Metadata = {
-  title: 'Aurora Studios - Creative Production',
-  description: 'Aurora Studios is a collective of passionate storytellers, innovative artists, and technical maestros dedicated to bringing compelling visual narratives to life.',
+  title: 'KiQa Productions - Broadcasting & Media Production',
+  description: 'KiQa Productions specializes in high-quality broadcasting and media production services, bringing your vision to life through innovative storytelling and cutting-edge technology.',
 };
 
 export default function RootLayout({
