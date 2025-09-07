@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora Studios - Creative Production</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-blue: #1a2a6c;
+            --purple: #b21f1f;
+            --orange: #fdbb2d;
+            --light-grey: #f4f4f4;
+            --text-color: #e0e0e0;
+            --primary-gradient: linear-gradient(45deg, var(--dark-blue) 0%, var(--purple) 50%, var(--orange) 100%);
+            --secondary-gradient: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); /* Cool blue gradient */
+            --accent-gradient: linear-gradient(to right, #ee0979 0%, #ff6a00 100%); /* Vibrant warm gradient */
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: #121212;
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: white;
+            margin-bottom: 0.5em;
+        }
+
+        a {
+            color: var(--orange);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: #000; /* Fallback */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            opacity: 0.7; /* Overlay gradient */
+            z-index: 1;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82b7cd9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMDF8MHwxfHNlYXJjaHw0OXx8ZmlsbSUyMHBhY2t8ZW58MHx8fHwxNzA4MTk5MDc3fDA&ixlib=rb-4.0.3&q=80&w=1080'); /* Replace with a suitable production studio image */
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.7); /* Darken the image */
+            z-index: 0;
+            animation: panBackground 20s infinite alternate linear;
+        }
+
+        @keyframes panBackground {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5em;
+            margin-bottom: 0.2em;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            opacity: 0; /* For GSAP animation */
+            transform: translateY(30px); /* For GSAP animation */
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 2em;
+            opacity: 0; /* For GSAP animation */
+            transform: translateY(30px); /* For GSAP animation */
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-gradient);
+            padding: 15px 40px;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            opacity: 0; /* For GSAP animation */
+            transform: translateY(30px); /* For GSAP animation */
+        }
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        /* --- About Section --- */
+        .about-section {
+            background-color: #1a1a1a;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 70% 30%, rgba(253, 187, 45, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 30% 70%, rgba(178, 31, 31, 0.1) 0%, transparent 40%);
+            z-index: 0;
+        }
+        .about-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .about-content h2 {
+            font-size: 3em;
+            margin-bottom: 1em;
+            background: -webkit-linear-gradient(45deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .about-content p {
+            font-size: 1.1em;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            color: var(--light-grey);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .about-item {
+            background-color: #222;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .about-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        .about-item h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: var(--orange);
+        }
+        .about-item p {
+            font-size: 0.95em;
+            color: #ccc;
+        }
+
+        /* --- Services Section --- */
+        .services-section {
+            background-color: #0d0d0d;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+        .services-section h2 {
+            font-size: 3em;
+            margin-bottom: 1em;
+            background: -webkit-linear-gradient(45deg, #ee0979, #ff6a00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .service-card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+        }
+        .service-card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .service-card-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 50%);
+        }
+        .service-card h3 {
+            padding: 15px 20px 0;
+            font-size: 1.6em;
+            color: white;
+            background: -webkit-linear-gradient(45deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .service-card p {
+            padding: 0 20px 20px;
+            color: #ccc;
+            font-size: 0.95em;
+        }
+
+        /* Example service images (replace with actual links for your project) */
+        #service-image-1 { background-image: url('https://images.unsplash.com/photo-1542204165-65bf26c2f470?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMDF8MHwxfHNlYXJjaHw3OXx8dmlkZW8lMjBwcm9kdWN0aW9ufGVufDB8fHx8MTcwODE5OTM4OXww&ixlib=rb-4.0.3&q=80&w=1080'); }
+        #service-image-2 { background-image: url('https://images.unsplash.com/photo-1517677208171-cd705204cd1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMDF8MHwxfHNlYXJjaHw3MXx8ZmlsbSUyMGVkaXRpbmd8ZW58MHx8fHwxNzA4MTk5MjI4fDA&ixlib=rb-4.0.3&q=80&w=1080'); }
+        #service-image-3 { background-image: url('https://images.unsplash.com/photo-1522204523234-87295a7845ba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMDF8MHwxfHNlYXJjaHwxNXx8Z3JhcGhpYyUyMGRlc2lnbnxlbnwwfHx8fDE3MDgyMDA3NzR8MA&ixlib=rb-4.0.3&q=80&w=1080'); }
+        #service-image-4 { background-image: url('https://images.unsplash.com/photo-1534723485458-9635bf7c82c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMDF8MHwxfHNlYXJjaHw1Nnx8YW5pbWF0aW9uJTIwc3R1ZGlvfGVufDB8fHx8MTcwODIwMTQwN3ww&ixlib=rb-4.0.3&q=80&w=1080'); }
+
+
+        /* --- Footer --- */
+        .footer {
+            background-color: #0a0a0a;
+            color: #888;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .footer p {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: #aaa;
+            margin: 0 10px;
+        }
+        .footer-links a:hover {
+            color: white;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Aurora Studios</h1>
+            <p>Crafting Vision into Reality. Film, Animation, Design.</p>
+            <a href="#contact" class="cta-button">Start Your Project</a>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container about-content">
+            <h2>Who We Are</h2>
+            <p>Aurora Studios is a collective of passionate storytellers, innovative artists, and technical maestros dedicated to bringing compelling visual narratives to life. From blockbuster films to captivating animations and cutting-edge design, we push boundaries.</p>
+            <div class="about-grid">
+                <div class="about-item">
+                    <h3>Creativity</h3>
+                    <p>We believe in the power of original ideas and fearless experimentation to create unforgettable experiences.</p>
+                </div>
+                <div class="about-item">
+                    <h3>Precision</h3>
+                    <p>Every detail matters. Our commitment to excellence ensures flawless execution from concept to completion.</p>
+                </div>
+                <div class="about-item">
+                    <h3>Innovation</h3>
+                    <p>Staying ahead of the curve, we embrace the latest technologies and techniques to deliver groundbreaking results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-card-image" id="service-image-1"></div>
+                    <h3>Film & Video Production</h3>
+                    <p>From commercials to feature films, we handle every aspect of your video project with unparalleled expertise.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-image" id="service-image-2"></div>
+                    <h3>Post-Production & Editing</h3>
+                    <p>Transforming raw footage into polished masterpieces with expert editing, color grading, and sound design.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-image" id="service-image-3"></div>
+                    <h3>Motion Graphics & VFX</h3>
+                    <p>Adding dynamic visual effects, stunning motion graphics, and seamless CGI to elevate your content.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-image" id="service-image-4"></div>
+                    <h3>Animation Studio</h3>
+                    <p>Bringing characters and worlds to life through 2D and 3D animation, perfect for storytelling and branding.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Aurora Studios. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#contact">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Section Animation
+        const heroTimeline = gsap.timeline();
+        heroTimeline
+            .to(".hero-content h1", { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" })
+            .to(".hero-content p", { opacity: 1, y: 0, duration: 1, ease: "power2.out" }, "-=0.8")
+            .to(".cta-button", { opacity: 1, y: 0, duration: 0.8, ease: "back.out(1.7)" }, "-=0.5");
+
+        // About Section Animations
+        gsap.from(".about-content h2", {
+            scrollTrigger: {
+                trigger: ".about-section",
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 20,
+            duration: 1,
+            ease: "power2.out"
+        });
+        gsap.from(".about-content p", {
+            scrollTrigger: {
+                trigger: ".about-section",
+                start: "top 75%",
+            },
+            opacity: 0,
+            y: 20,
+            duration: 1,
+            ease: "power2.out",
+            delay: 0.2
+        });
+        gsap.from(".about-item", {
+            scrollTrigger: {
+                trigger: ".about-grid",
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 20,
+            stagger: 0.3,
+            duration: 0.8,
+            ease: "power2.out"
+        });
+
+        // Services Section Animations
+        gsap.from(".services-section h2", {
+            scrollTrigger: {
+                trigger: ".services-section",
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 20,
+            duration: 1,
+            ease: "power2.out"
+        });
+        gsap.from(".service-card", {
+            scrollTrigger: {
+                trigger: ".services-grid",
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 20,
+            stagger: 0.2,
+            duration: 0.8,
+            ease: "power2.out"
+        });
+
+    </script>
+</body>
+</html>
